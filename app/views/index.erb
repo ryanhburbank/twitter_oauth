@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>Twitter: because your words are important...</h1>
+  <% if logged_in? %>
+    <nav id="logout">
+      <ul>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+    </nav>
+  <% end %>
+ 
+  <div id="tweet_display">
+    <% if @current_tweet %>
+      <%= erb :_tweet_content.erb %>
+    <% end %>
+  </div>
+
+  <% if logged_in? %>
+    <%= erb :_create_tweet.erb %>
+  <% else %>
+   <h3><a href="/auth">Sign in through twitter</a></h3>
+  <% end %> 
+  
+</div>
