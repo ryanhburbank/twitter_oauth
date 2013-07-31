@@ -23,9 +23,9 @@ get '/auth' do
   session.delete(:request_token)
   
   @user = User.find_or_create_by_username(:username => @access_token.params[:screen_name])
-  p @user
+
   @user.update_attributes(:oauth_token => @access_token.token, :oauth_secret => @access_token.secret)
-  p @user
+
   session[:user_id] = @user.id
   # our request token is only valid until we use it to get an access token, so let's delete it from our session
   redirect to('/')
@@ -37,11 +37,8 @@ post '/tweet' do
   @current_user = current_user
   
   client = Twitter::Client.new(oauth_token: @current_user.oauth_token, 
-                           oauth_token_secret: @current_user.oauth_secret)
+                               oauth_token_secret: @current_user.oauth_secret)
   #is it possible to call methods on the helper method which generates a current user
-  
-  puts "#{client}: this is the current client"
-  
   @current_tweet = client.update(text)
 
   if request.xhr?
