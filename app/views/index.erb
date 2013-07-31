@@ -3,21 +3,21 @@
   <% if logged_in? %>
     <nav id="logout">
       <ul>
-        <li><a href="/logout">Logout</a></li>
+        <li><a href="/sign_out">Logout</a></li>
       </ul>
     </nav>
-  <% end %>
- 
   <div id="tweet_display">
     <% if @current_tweet %>
-      <%= erb :_tweet_content.erb %>
+      <%= erb :_tweet_content %>
     <% end %>
   </div>
-
-  <% if logged_in? %>
-    <%= erb :_create_tweet.erb %>
+    <%= erb :_make_tweet %>
   <% else %>
-   <h3><a href="/auth">Sign in through twitter</a></h3>
+   <h3><a href="/sign_in">Sign in through twitter</a></h3>
   <% end %> 
+
+ 
+
+
   
 </div>

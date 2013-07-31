@@ -36,7 +36,7 @@ post '/tweet' do
   text = params[:text]
   @current_user = current_user
   
-  client = Twitter::Client(oauth_token: @current_user.oauth_token, 
+  client = Twitter::Client.new(oauth_token: @current_user.oauth_token, 
                            oauth_token_secret: @current_user.oauth_secret)
   #is it possible to call methods on the helper method which generates a current user
   
